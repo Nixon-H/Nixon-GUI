@@ -1,0 +1,42 @@
+{
+  "name": "nixon-gui",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://nixon-gui.vercel.app/",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "predeploy": "npm run build",
+    "deploy": "npm run build && gh-pages -d out"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.11.0",
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
+    "@vercel/speed-insights": "^1.1.0",
+    "axios": "^1.4.0",
+    "disqus-react": "^1.1.5",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
+    "expr-eval": "^2.0.2",
+    "jquery": "^3.7.0",
+    "next": "^15.0.3",
+    "pdfjs-dist": "^3.9.179",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-draft-wysiwyg": "^1.15.0",
+    "react-draggable": "^4.4.5",
+    "react-ga": "^3.3.1",
+    "react-onclickoutside": "^6.13.0",
+    "react-player": "^2.12.0",
+    "typewriter-effect": "^2.20.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "gh-pages": "^5.0.0",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3"
+  }
+}

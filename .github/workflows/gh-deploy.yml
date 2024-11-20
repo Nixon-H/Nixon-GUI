@@ -1,0 +1,47 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]  # Update to a compatible Node.js version
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Installing Packages 🥁
+        run: npm i
+      - name: Installing react-dom
+        run: npm install react-dom
+      - name: draft
+        run: npm i --save draft-js react-draft-wysiwyg
+
+      - name: Building 🧱
+        run: npm run build
+        env:
+          NEXT_PUBLIC_TRACKING_ID: UA-238870718-1
+          NEXT_PUBLIC_SERVICE_ID: service_qo7jtog
+          NEXT_PUBLIC_TEMPLATE_ID: template_884mtzv
+      
+      - name: Exporting Bundle Files 🎪
+        run: npm run export  # Ensure that next.config.js is correctly set up
+      - run: touch ./out/.nojekyll
+
+      - name: Deploy to Github-Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: out
